@@ -1,35 +1,33 @@
-package com.javimartd.navwizard.ui.navigation.main
+package com.javimartd.navwizard.ui.navigation.game.screen
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
+import com.javimartd.navwizard.ui.navigation.game.GameNavigator
 
 @Composable
-fun MainScreen(mainNavigator: MainNavigator) {
+fun GameThirdScreen(gameNavigator: GameNavigator) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
     ) {
         Text(
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            text = "Main screen",
+            text = "Game Third Screen",
             textAlign = TextAlign.Center
         )
         Button(
-            onClick = {
-                mainNavigator.actionNavigateToSecond
-            }
-        ) {
-            Text(text = "Navigate Forward")
-        }
-        Button(
-            onClick = { mainNavigator.actionNavigateUp }
+            onClick = { gameNavigator.actionNavigateUp() }
         ) {
             Text(text = "Navigate Back")
         }
