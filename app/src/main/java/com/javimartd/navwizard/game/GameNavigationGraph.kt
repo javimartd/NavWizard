@@ -22,17 +22,31 @@ fun NavGraphBuilder.gameNavigationGraph(gameNavigator: GameNavigator) {
             GameFirstView(gameNavigator)
         }
 
-        composable(route = GameNavigator.SECOND) {
-            GameSecondView(gameNavigator)
-        }
-
-        val arguments = listOf(navArgument(GameNavigator.CODE) { type = NavType.StringType })
+        val secondViewArguments = listOf(
+            navArgument(GameNavigator.FIRST_ARG) { type = NavType.StringType }
+        )
         composable(
-            arguments = arguments,
+            arguments = secondViewArguments,
+            route = GameNavigator.SECOND
+        ) { navBackStackEntry ->
+            GameSecondView(
+                gameNavigator = gameNavigator,
+                firstArg = navBackStackEntry.arguments?.getString(GameNavigator.FIRST_ARG)
+            )
+        }
+        val thirdViewArguments = listOf(
+            navArgument(GameNavigator.FIRST_ARG) { type = NavType.StringType },
+            navArgument(GameNavigator.SECOND_ARG) { type = NavType.StringType }
+        )
+        composable(
+            arguments = thirdViewArguments,
             route = GameNavigator.THIRD
         ) { navBackStackEntry ->
-            val code = navBackStackEntry.arguments?.getString(GameNavigator.CODE)
-            GameThirdView(gameNavigator = gameNavigator, message = code)
+            GameThirdView(
+                gameNavigator = gameNavigator,
+                firstArg = navBackStackEntry.arguments?.getString(GameNavigator.FIRST_ARG),
+                secondArg = navBackStackEntry.arguments?.getString(GameNavigator.SECOND_ARG)
+            )
         }
 
         composable(route = GameNavigator.FOURTH) {

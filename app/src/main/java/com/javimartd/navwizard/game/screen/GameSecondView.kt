@@ -16,7 +16,10 @@ import androidx.compose.ui.unit.sp
 import com.javimartd.navwizard.game.GameNavigator
 
 @Composable
-fun GameSecondView(gameNavigator: GameNavigator) {
+fun GameSecondView(
+    gameNavigator: GameNavigator,
+    firstArg: String?
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -29,8 +32,21 @@ fun GameSecondView(gameNavigator: GameNavigator) {
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
+        firstArg?.let {
+            Text(
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.fillMaxWidth(),
+                text = it,
+                textAlign = TextAlign.Center,
+            )
+        }
         Button(
-            onClick = { gameNavigator.actionNavigateToGameThirdView("This is a code message") }
+            onClick = {
+                gameNavigator.actionNavigateToGameThirdView(
+                    "my first argument",
+                    "my second argument"
+                )
+            }
         ) {
             Text(text = "Navigate Forward")
         }

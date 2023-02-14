@@ -6,5 +6,5 @@ import com.javimartd.navwizard.game.GameNavigator
 
 class BaseViewModel(private val savedStateHandle: SavedStateHandle): ViewModel() {
 
-    private val productId = savedStateHandle.get<String>(GameNavigator.CODE).orEmpty()
+    private val productId = savedStateHandle.get<String>(GameNavigator.FIRST_ARG).orEmpty()
 }

@@ -15,13 +15,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.javimartd.navwizard.game.GameNavigator
-import com.javimartd.navwizard.player.PlayerNavigator
 
 @Composable
 fun GameThirdView(
     viewModel: BaseViewModel = hiltViewModel(),
     gameNavigator: GameNavigator,
-    message: String?
+    firstArg: String?,
+    secondArg: String?,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -35,7 +35,15 @@ fun GameThirdView(
             text = "Game Third View!",
             textAlign = TextAlign.Center
         )
-        message?.let {
+        firstArg?.let {
+            Text(
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.fillMaxWidth(),
+                text = it,
+                textAlign = TextAlign.Center,
+            )
+        }
+        secondArg?.let {
             Text(
                 style = TextStyle(fontSize = 16.sp),
                 modifier = Modifier.fillMaxWidth(),

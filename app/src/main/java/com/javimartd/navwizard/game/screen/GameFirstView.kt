@@ -34,7 +34,7 @@ fun GameFirstView(gameNavigator: GameNavigator) {
             style = TextStyle(fontSize = 24.sp)
         )
         Button(
-            onClick = { gameNavigator.actionNavigateForwardTo(GameNavigator.SECOND) }
+            onClick = { gameNavigator.actionNavigateToGameSecondView("this is a cool message") }
         ) {
             Text(text = "Navigate Forward")
         }
