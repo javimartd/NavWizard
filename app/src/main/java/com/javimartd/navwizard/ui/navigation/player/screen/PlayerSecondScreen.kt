@@ -19,7 +19,7 @@ import com.javimartd.navwizard.R
 import com.javimartd.navwizard.ui.navigation.player.PlayerNavigator
 
 @Composable
-fun PlayerFirstScreen(playerNavigator: PlayerNavigator) {
+fun PlayerSecondScreen(playerNavigator: PlayerNavigator) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -28,13 +28,13 @@ fun PlayerFirstScreen(playerNavigator: PlayerNavigator) {
         Text(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            text = "Player First Screen",
+            text = "Player Second Screen",
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
         Button(
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.teal_200)),
-            onClick = {  }
+            onClick = { playerNavigator.actionNavigateUp() }
         ) {
             Text(text = "Navigate Back")
         }

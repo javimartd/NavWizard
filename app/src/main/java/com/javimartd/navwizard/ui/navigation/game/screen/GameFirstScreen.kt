@@ -9,8 +9,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.javimartd.navwizard.ui.navigation.game.GameNavigator
 
 @Composable
@@ -24,12 +27,13 @@ fun GameFirstScreen(gameNavigator: GameNavigator) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
             text = "Game First Screen",
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            style = TextStyle(fontSize = 24.sp)
         )
         Button(
             onClick = { gameNavigator.actionNavigateToGameSecondScreen() }
         ) {
-            Text(text = "Navigate To Second Screen")
+            Text(text = "Navigate Forward")
         }
         Button(
             onClick = { gameNavigator.actionNavigateUp() }
