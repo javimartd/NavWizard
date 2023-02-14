@@ -1,28 +1,26 @@
-package com.javimartd.navwizard.ui.navigation.game.screen
+package com.javimartd.navwizard.game.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.javimartd.navwizard.ui.navigation.game.GameNavigator
-import com.javimartd.navwizard.ui.navigation.player.PlayerNavigator
+import com.javimartd.navwizard.R
+import com.javimartd.navwizard.game.GameNavigator
+import com.javimartd.navwizard.player.PlayerNavigator
 
 @Composable
-fun GameThirdView(
-    viewModel: BaseViewModel = hiltViewModel(),
-    gameNavigator: GameNavigator,
-    message: String?
-) {
+fun GameFirstView(gameNavigator: GameNavigator) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -31,27 +29,20 @@ fun GameThirdView(
         Text(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            style = TextStyle(fontSize = 24.sp),
-            text = "Game Third Screen",
-            textAlign = TextAlign.Center
+            text = "Game First View!",
+            textAlign = TextAlign.Center,
+            style = TextStyle(fontSize = 24.sp)
         )
-        message?.let {
-            Text(
-                style = TextStyle(fontSize = 16.sp),
-                modifier = Modifier.fillMaxWidth(),
-                text = it,
-                textAlign = TextAlign.Center,
-            )
-        }
         Button(
-            onClick = { gameNavigator.actionNavigateToGameFourthScreen() }
+            onClick = { gameNavigator.actionNavigateForwardTo(GameNavigator.SECOND) }
         ) {
             Text(text = "Navigate Forward")
         }
         Button(
-            onClick = { gameNavigator.actionNavigateForwardToPath(PlayerNavigator.SECOND) }
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.teal_200)),
+            onClick = { gameNavigator.actionNavigateForwardTo(PlayerNavigator.FIRST) }
         ) {
-            Text(text = "Navigate to Player Second Screen")
+            Text(text = "Navigate to Player Tree")
         }
         Button(
             onClick = { gameNavigator.actionNavigateUp() }

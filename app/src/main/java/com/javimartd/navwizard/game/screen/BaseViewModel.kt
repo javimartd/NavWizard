@@ -1,8 +1,8 @@
-package com.javimartd.navwizard.ui.navigation.game.screen
+package com.javimartd.navwizard.game.screen
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.javimartd.navwizard.ui.navigation.game.GameNavigator
+import com.javimartd.navwizard.game.GameNavigator
 
 class BaseViewModel(private val savedStateHandle: SavedStateHandle): ViewModel() {
 

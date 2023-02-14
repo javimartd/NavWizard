@@ -1,4 +1,4 @@
-package com.javimartd.navwizard.ui.navigation.game.screen
+package com.javimartd.navwizard.game.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,10 +13,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.javimartd.navwizard.ui.navigation.game.GameNavigator
+import com.javimartd.navwizard.game.GameNavigator
 
 @Composable
-fun GameFourthScreen(gameNavigator: GameNavigator) {
+fun GameFourthView(gameNavigator: GameNavigator) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -25,20 +25,10 @@ fun GameFourthScreen(gameNavigator: GameNavigator) {
         Text(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            text = "Game Fourth Screen!",
+            text = "Game Fourth View!",
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
-        Button(
-            onClick = { gameNavigator.actionNavigateBackToPath(GameNavigator.SECOND) }
-        ) {
-            Text(text = "Navigate to Second Screen")
-        }
-        Button(
-            onClick = { gameNavigator.actionNavigateBackToPath(GameNavigator.START) }
-        ) {
-            Text(text = "Navigate to Start")
-        }
         Button(
             onClick = { gameNavigator.actionNavigateUp() }
         ) {

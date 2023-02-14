@@ -1,4 +1,4 @@
-package com.javimartd.navwizard.ui.navigation.game.screen
+package com.javimartd.navwizard.game.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,10 +13,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.javimartd.navwizard.ui.navigation.game.GameNavigator
+import com.javimartd.navwizard.game.GameNavigator
 
 @Composable
-fun GameSecondScreen(gameNavigator: GameNavigator) {
+fun GameSecondView(gameNavigator: GameNavigator) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -25,12 +25,12 @@ fun GameSecondScreen(gameNavigator: GameNavigator) {
         Text(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            text = "Game Second Screen!",
+            text = "Game Second View!",
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
         Button(
-            onClick = { gameNavigator.actionNavigateToGameThirdScreen("This is a code message") }
+            onClick = { gameNavigator.actionNavigateToGameThirdView("This is a code message") }
         ) {
             Text(text = "Navigate Forward")
         }

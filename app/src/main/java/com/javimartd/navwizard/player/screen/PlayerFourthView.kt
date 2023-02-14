@@ -1,4 +1,4 @@
-package com.javimartd.navwizard.ui.navigation.player.screen
+package com.javimartd.navwizard.player.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,10 +16,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.javimartd.navwizard.R
-import com.javimartd.navwizard.ui.navigation.player.PlayerNavigator
+import com.javimartd.navwizard.player.PlayerNavigator
 
 @Composable
-fun PlayerSecondScreen(playerNavigator: PlayerNavigator) {
+fun PlayerFourthView(playerNavigator: PlayerNavigator) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -28,10 +28,16 @@ fun PlayerSecondScreen(playerNavigator: PlayerNavigator) {
         Text(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            text = "Player Second Screen",
+            text = "Player Fourth View",
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
+        Button(
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.teal_200)),
+            onClick = { playerNavigator.actionNavigateBackTo(PlayerNavigator.FIRST) }
+        ) {
+            Text(text = "Navigate to Start")
+        }
         Button(
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.teal_200)),
             onClick = { playerNavigator.actionNavigateUp() }
