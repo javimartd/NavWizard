@@ -34,7 +34,7 @@ fun PlayerFirstScreen(playerNavigator: PlayerNavigator) {
         )
         Button(
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.teal_200)),
-            onClick = {  }
+            onClick = { playerNavigator.actionNavigateUp() }
         ) {
             Text(text = "Navigate Back")
         }

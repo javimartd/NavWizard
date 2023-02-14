@@ -30,7 +30,7 @@ fun GameSecondScreen(gameNavigator: GameNavigator) {
             style = TextStyle(fontSize = 24.sp)
         )
         Button(
-            onClick = { gameNavigator.actionNavigateToGameThirdScreen() }
+            onClick = { gameNavigator.actionNavigateToGameThirdScreen("This is a code message") }
         ) {
             Text(text = "Navigate Forward")
         }

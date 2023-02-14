@@ -19,8 +19,9 @@ class GameNavigator(navController: NavHostController) {
         navController.navigate(SECOND)
     }
 
-    val actionNavigateToGameThirdScreen: () -> Unit = {
-        navController.navigate(THIRD)
+    val actionNavigateToGameThirdScreen: (String) -> Unit = { message ->
+        val path = THIRD.replace("{$CODE}", message)
+        navController.navigate(path)
     }
 
     val actionNavigateToGameFourthScreen: () -> Unit = {
@@ -32,10 +33,13 @@ class GameNavigator(navController: NavHostController) {
     }
 
     companion object {
+
+        const val CODE = "id"
+
         const val ROOT = "game_graph"
         const val START = "game_first_screen"
         const val SECOND = "game_second_screen"
-        const val THIRD = "game_third_screen"
+        const val THIRD = "game_third_screen/{$CODE}"
         const val FOURTH = "game_fourth_screen"
     }
 }

@@ -14,10 +14,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.javimartd.navwizard.ui.navigation.game.GameNavigator
-import com.javimartd.navwizard.ui.navigation.player.PlayerNavigator
 
 @Composable
-fun GameThirdScreen(gameNavigator: GameNavigator) {
+fun GameFirstView(gameNavigator: GameNavigator) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -26,19 +25,14 @@ fun GameThirdScreen(gameNavigator: GameNavigator) {
         Text(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            text = "Game Third Screen",
+            text = "Game First Screen",
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
         Button(
-            onClick = { gameNavigator.actionNavigateToGameFourthScreen() }
+            onClick = { gameNavigator.actionNavigateToGameSecondScreen() }
         ) {
             Text(text = "Navigate Forward")
-        }
-        Button(
-            onClick = { gameNavigator.actionNavigateForwardToPath(PlayerNavigator.SECOND) }
-        ) {
-            Text(text = "Navigate to Player Second Screen")
         }
         Button(
             onClick = { gameNavigator.actionNavigateUp() }
