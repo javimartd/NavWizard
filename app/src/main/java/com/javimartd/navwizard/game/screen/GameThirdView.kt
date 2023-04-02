@@ -50,7 +50,7 @@ fun GameThirdView(
             )
         }
         Button(
-            onClick = { gameNavigator.actionNavigateForwardTo(GameNavigator.FOURTH) }
+            onClick = { gameNavigator.actionNavigateToFourthView.invoke() }
         ) {
             Text(text = "Navigate Forward")
         }

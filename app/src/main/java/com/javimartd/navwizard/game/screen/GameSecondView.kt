@@ -18,7 +18,7 @@ import com.javimartd.navwizard.game.GameNavigator
 @Composable
 fun GameSecondView(
     gameNavigator: GameNavigator,
-    firstArg: String?
+    firstArg: Int
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -32,14 +32,12 @@ fun GameSecondView(
             textAlign = TextAlign.Center,
             style = TextStyle(fontSize = 24.sp)
         )
-        firstArg?.let {
-            Text(
-                style = TextStyle(fontSize = 16.sp),
-                modifier = Modifier.fillMaxWidth(),
-                text = it,
-                textAlign = TextAlign.Center,
-            )
-        }
+        Text(
+            style = TextStyle(fontSize = 16.sp),
+            modifier = Modifier.fillMaxWidth(),
+            text = firstArg.toString(),
+            textAlign = TextAlign.Center,
+        )
         Button(
             onClick = {
                 gameNavigator.actionNavigateToGameThirdView(

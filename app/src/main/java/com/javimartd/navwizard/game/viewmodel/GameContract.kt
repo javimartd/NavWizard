@@ -13,6 +13,6 @@ interface GameContract: BaseContract {
     }
 
     sealed interface GameEffects: BaseContract.Effects {
-        object NavigateToSecondView: GameContract.GameEvents
+        object CustomEffects: GameContract.GameEffects
     }
 }

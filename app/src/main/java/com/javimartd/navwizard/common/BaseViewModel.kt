@@ -1,13 +1,12 @@
 package com.javimartd.navwizard.common
 
-import androidx.compose.runtime.MutableState
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.javimartd.navwizard.game.GameNavigator
-import com.javimartd.navwizard.game.viewmodel.GameContract
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<
         uiState: BaseContract.UiState,
@@ -20,4 +19,13 @@ abstract class BaseViewModel<
 
     private val _uiState = MutableStateFlow<uiState>(initState())
     val uiState: StateFlow<uiState> = _uiState
+
+    private val _effect = Channel<effects>(Channel.BUFFERED)
+    val effect = _effect.receiveAsFlow()
+
+    protected fun sendEffect(effect: effects) {
+        viewModelScope.launch {
+            _effect.send(effect)
+        }
+    }
 }

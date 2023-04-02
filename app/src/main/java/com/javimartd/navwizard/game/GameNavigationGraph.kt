@@ -5,10 +5,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import com.javimartd.navwizard.game.model.GameUiState
 import com.javimartd.navwizard.game.screen.GameFirstView
 import com.javimartd.navwizard.game.screen.GameFourthView
 import com.javimartd.navwizard.game.screen.GameSecondView
 import com.javimartd.navwizard.game.screen.GameThirdView
+import com.javimartd.navwizard.ui.navigation.type.parcelableTypeOf
 
 fun NavGraphBuilder.gameNavigationGraph(gameNavigator: GameNavigator) {
 
@@ -23,7 +25,11 @@ fun NavGraphBuilder.gameNavigationGraph(gameNavigator: GameNavigator) {
         }
 
         val secondViewArguments = listOf(
-            navArgument(GameNavigator.FIRST_ARG) { type = NavType.StringType }
+            navArgument(GameNavigator.FIRST_ARG) {
+                nullable = false
+                defaultValue = 0
+                type = NavType.IntType
+            }
         )
         composable(
             arguments = secondViewArguments,
@@ -31,7 +37,7 @@ fun NavGraphBuilder.gameNavigationGraph(gameNavigator: GameNavigator) {
         ) { navBackStackEntry ->
             GameSecondView(
                 gameNavigator = gameNavigator,
-                firstArg = navBackStackEntry.arguments?.getString(GameNavigator.FIRST_ARG)
+                firstArg = navBackStackEntry.arguments!!.getInt(GameNavigator.FIRST_ARG)
             )
         }
         val thirdViewArguments = listOf(
@@ -48,10 +54,17 @@ fun NavGraphBuilder.gameNavigationGraph(gameNavigator: GameNavigator) {
                 secondArg = navBackStackEntry.arguments?.getString(GameNavigator.SECOND_ARG)
             )
         }
-
-        composable(route = GameNavigator.FOURTH) {
-            GameFourthView(gameNavigator)
+        val fourthViewArguments = listOf(
+            navArgument(GameNavigator.FIRST_ARG) { type = NavType.parcelableTypeOf<GameUiState>() }
+        )
+        composable(
+            arguments = fourthViewArguments,
+            route = GameNavigator.FOURTH
+        ) {
+            GameFourthView(
+                gameNavigator = gameNavigator,
+                firstArg = it.arguments?.getParcelable(GameNavigator.FIRST_ARG)!!
+            )
         }
-
     }
 }
